@@ -20,6 +20,7 @@ jobs:
           - -cx
           - |
             ls -lah
+            pwd
             date > ./the-output/file
   - task: read-ouput-from-previous-step
     config:
@@ -40,3 +41,8 @@ jobs:
           - |
             ls -lah
             cat ./the-output/file
+
+
+# fly -t tutorial set-pipeline -p passing-artifacts -c passing-artifacts.yml
+# fly -t tutorial unpause-pipeline -p passing-artifacts
+# fly -t tutorial trigger-job --job passing-artifacts/the-job --watch
